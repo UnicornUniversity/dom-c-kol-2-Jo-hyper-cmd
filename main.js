@@ -17,6 +17,11 @@
  */
  export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
 
+      // Special case: 0 must always return "0"
+      if (inputNumber === 0 || inputNumber === "0") {
+        return "0";
+      }
+      
   // input → output where input base < output base (e.g. 2 → 10)
   if (inputNumberSystem < outputNumberSystem) {
     let number = inputNumber.toString();
