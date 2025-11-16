@@ -44,7 +44,7 @@
       number = Math.floor(number / outputNumberSystem);
     }
 
-    let conversionResult = Number(result.join(''));
+    let conversionResult = result.join('');
     return conversionResult;
   }
 
