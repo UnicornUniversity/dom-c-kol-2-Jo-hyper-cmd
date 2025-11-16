@@ -1,14 +1,24 @@
 //zaciatokVypracovania: 11/11/25
+
 /**
- * TODO - Write functional code for this application. You can call any other function, but usage of ".toString(numberSystem)" and "Number.parseInt(number, numberSystem)" is forbidden (only permitted when used on individual digits).
- * The main function which calls the application.
- * TODO - Please, add specific description here for the application purpose.
- * @param {string} inputNumber number that is being converted
- * @param {number} inputNumberSystem numerical system that the inputNumber is being converted from
- * @param {number} outputNumberSystem numerical system that the inputNumber is being converted into
- * @returns {string} containing number converted to output system
+ * The main entry point of the application.  
+ * Converts numbers between decimal (base 10) and binary (base 2) systems.
+ * Conversion is implemented manually without using number.toString(base)
+ * or parseInt(number, base), except when reading individual digits.
+ *
+ * This version reflects the original student logic:
+ * - if input base < output base → convert using positional weights
+ * - if input base > output base → convert using repeated division
+ * - if bases are equal → return input
+ *
+ * @param {string | number} inputNumber - Number to be converted.
+ * @param {number} inputNumberSystem - Base of the input number.
+ * @param {number} outputNumberSystem - Base to convert into.
+ * @returns {string | number} - Converted number.
  */
  export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
+
+  // input → output where input base < output base (e.g. 2 → 10)
   if (inputNumberSystem < outputNumberSystem) {
     let number = inputNumber;
     let conversionResult = 0;
@@ -16,12 +26,15 @@
 
     for (let i = number.length - 1; i >= 0; i--) {
       let digit = Number(number[i]);
-
       conversionResult += digit * weight;
       weight *= inputNumberSystem;
     }
+
     return conversionResult;
-  } else if (inputNumberSystem > outputNumberSystem) {
+  }
+
+  // input → output where input base > output base (e.g. 10 → 2)
+  else if (inputNumberSystem > outputNumberSystem) {
     let number = inputNumber;
     let result = [];
 
@@ -33,24 +46,28 @@
 
     let conversionResult = Number(result.join(''));
     return conversionResult;
-  } else if (inputNumberSystem === outputNumberSystem) {
+  }
+
+  // same base → no conversion
+  else if (inputNumberSystem === outputNumberSystem) {
     return inputNumber;
   }
+
+  // unreachable, but required for completeness
+  return "Conversion error";
 }
 
 /**
- * TODO - Change this to contain all input number systems that your application can convert from.
- * Function which returns which number systems are permitted on input.
- * @returns {Array} array of numbers refering to permitted input systems
+ * Returns all allowed input number systems.
+ * @returns {Array<number>} permitted input bases
  */
 export function permittedInputSystems() {
   return [10, 2];
 }
 
 /**
- * TODO - Change this to contain all output number systems that your application can convert to.
- * Function which returns which number systems are permitted on output.
- * @returns {Array} array of numbers refering to permitted output systems
+ * Returns all allowed output number systems.
+ * @returns {Array<number>} permitted output bases
  */
 export function permittedOutputSystems() {
   return [10, 2];
