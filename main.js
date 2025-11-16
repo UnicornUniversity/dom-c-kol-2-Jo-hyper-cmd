@@ -32,7 +32,6 @@
 
     return conversionResult.toString();
   }
-
   // input → output where input base > output base (e.g. 10 → 2)
   else if (inputNumberSystem > outputNumberSystem) {
     let number = inputNumber;
