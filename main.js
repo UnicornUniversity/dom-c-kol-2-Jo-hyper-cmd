@@ -1,6 +1,3 @@
-//TODO add imports if needed
-//import { exMain } from "./exclude/exampleAss2.js"
-//TODO add/change doc as needed
 //zaciatokVypracovania: 11/11/25
 /**
  * TODO - Write functional code for this application. You can call any other function, but usage of ".toString(numberSystem)" and "Number.parseInt(number, numberSystem)" is forbidden (only permitted when used on individual digits).
@@ -13,7 +10,7 @@
  */
  export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
   if (inputNumberSystem < outputNumberSystem) {
-    let number = inputNumber.toString();
+    let number = inputNumber;
     let conversionResult = 0;
     let weight = 1;
 
@@ -40,8 +37,6 @@
     return inputNumber;
   }
 }
-
-console.log(main(100, 10, 2));
 
 /**
  * TODO - Change this to contain all input number systems that your application can convert from.
