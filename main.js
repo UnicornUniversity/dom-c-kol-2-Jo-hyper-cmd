@@ -30,7 +30,7 @@
       weight *= inputNumberSystem;
     }
 
-    return conversionResult;
+    return conversionResult.toString();
   }
 
   // input → output where input base > output base (e.g. 10 → 2)
